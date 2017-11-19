@@ -1,6 +1,15 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Alumno implements BaseEntity<Long> {
+	@Id
 	private Long id;
 
 	private String nombres;
@@ -8,6 +17,9 @@ public class Alumno implements BaseEntity<Long> {
 	private String apellidoPaterno;
 
 	private String apellidoMaterno;
+	
+	@OneToMany(mappedBy="alumno")
+	private List<Matricula> matriculas = new ArrayList<Matricula>();
 
 	@Override
 	public Long getId() {
@@ -41,6 +53,14 @@ public class Alumno implements BaseEntity<Long> {
 
 	public void setApellidoMaterno(String apellidoMaterno) {
 		this.apellidoMaterno = apellidoMaterno;
+	}
+
+	public List<Matricula> getMatriculas() {
+		return matriculas;
+	}
+
+	public void setMatriculas(List<Matricula> matriculas) {
+		this.matriculas = matriculas;
 	}
 
 }

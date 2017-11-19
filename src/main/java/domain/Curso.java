@@ -1,8 +1,19 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Curso implements BaseEntity<Long> {
+	@Id
 	private Long id;
 
 	private String codigo;
@@ -10,8 +21,16 @@ public class Curso implements BaseEntity<Long> {
 	private String nombre;
 
 	private Integer creditos;
-
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "prerequisito",
+		joinColumns = @JoinColumn(name = "idCurso", referencedColumnName = "id"),
+		inverseJoinColumns = @JoinColumn(name = "idCursoPrerequisito", referencedColumnName = "id")
+	)
 	private List<Curso> prerequisitos;
+	
+	@OneToMany(mappedBy="curso")
+	private List<Matricula> matriculas = new ArrayList<Matricula>();
 
 	@Override
 	public Long getId() {
@@ -55,4 +74,12 @@ public class Curso implements BaseEntity<Long> {
 		this.prerequisitos = prerequisitos;
 	}
 
+	public List<Matricula> getMatriculas() {
+		return matriculas;
+	}
+
+	public void setMatriculas(List<Matricula> matriculas) {
+		this.matriculas = matriculas;
+	}
+	
 }
