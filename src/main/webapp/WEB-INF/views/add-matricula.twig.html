@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Matricular alumno</title>
+</head>
+<body>
+	<form action="matricula" method="POST">
+		<table>
+			<tbody>
+				<tr>
+					<td>ID</td>
+					<td><input type="hidden" name="id" value="{{matricula.id}}" />{{matricula.id}}</td>
+				</tr>
+				<tr>
+					<td>Id alumno</td>
+					<td><input type="text" name="alumno" value="{{matricula.alumno}}" /></td>
+				</tr>
+				<tr>
+					<td>Id curso</td>
+					<td><input type="text" name="curso" value="{{matricula.curso}}" /></td>
+				</tr>
+				<tr>
+					<td>Semestre</td>
+					<td><input type="text" name="semestre" value="{{matricula.semestre}}" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<input type="submit" value="Save" />
+		<input type="button" value="Cancel" onclick="history.back();" />
+	</form>
+</body>
+</html>

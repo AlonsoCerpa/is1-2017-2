@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Matricula</title>
+</head>
+<body>
+	<table class=>
+		<thead>
+		</thead>
+		
+		<tbody>
+			<tr>
+				<th>ID</th>
+				<td>{{ matricula.id }}</td>
+			</tr>
+			<tr>
+				<th>Id Alumno</th>
+				<td>{{ matricula.alumno }}</td>
+			</tr>
+			<tr>
+				<th>Id Curso</th>
+				<td>{{ matricula.curso }}</td>
+			</tr>
+			<tr>
+				<th>Semestre</th>
+				<td>{{ matricula.semestre }}</td>
+			</tr>
+			<tr>
+				<th>Nota</th>
+				<td>{{ matricula.nota }}</td>
+			</tr>
+        </tbody>
+      </table>
+      <br />
+      <a href="add-matricula?id={{matricula.id}}">Modify</a> |<a href="add-matricula">Add New Matricula</a> | <a href="matricula">List All</a>
+</body>
+</html>
